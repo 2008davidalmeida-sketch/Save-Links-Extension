@@ -4,7 +4,6 @@
     "version": "1.0",
     "permissions": ["storage", "tabs"],
     "action": {
-        "default_popup": "src/index.html",
-        "default_icon": "image.png"
+        "default_popup": "src/index.html"
     }
 }

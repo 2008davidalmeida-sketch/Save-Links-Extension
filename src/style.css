@@ -1,8 +1,96 @@
 html, body {
-  width: 400px;
-  height: 600px;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family:Arial, Helvetica, sans-serif ;
+    width: 400px;
+    height: 600px;
+    
+    background: url(/images/7304f479-3bda-47e8-a711-d96230f978bb.png);
+    background-size: contain;       /* or use `contain` if you want the whole image visible */
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif ;
 }
+
+/* Global designs */
+button{
+
+    margin: 10px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+button:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+
+/* Configurations */
+#configs-container {
+    height: 60px; 
+    display: flex;
+    justify-content: end;
+}
+
+#configs{
+    margin: 10px;
+    background: none;
+    font-size: 30px;
+    border: none;
+    border-radius: 50px;
+}
+
+#configs:hover{
+    background-color: hsl(0, 0%, 95%);
+}
+
+
+/* Header */
+#header {
+    height: 60px; 
+    text-align: center;
+}
+
+#save-btn{
+    background-color: #5aa6e9;
+}
+
+#save-btn:hover{
+    background-color: hsl(208, 76%, 60%);
+}
+
+
+/* Objects-container */
+#objects-container {
+    height: 420px;
+}
+
+
+/* Delete */
+#delete-container {
+    text-align: center;
+    height: 60px;
+}
+
+#delete-btn {
+    font-size: 13px;
+    margin: 5px auto;
+    width: 100px;
+    background-color: rgb(209, 23, 23);
+}
+
+#delete-btn:hover {
+    font-size: 13px;
+    margin: 5px auto;
+    width: 100px;
+    background-color: hsl(0, 80%, 40%);
+}
+
