@@ -1,0 +1,125 @@
+
+
+html, body {
+    width: 400px;
+    height: 600px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Funnel Display", sans-serif;
+
+    background: url(/images/grey.jpg);
+    background-size: cover;       
+    background-position: bottom;
+
+
+    text-align: center;
+}
+
+button{
+    border: none;
+    border-radius: 20px;
+    
+    font: inherit;
+    font-weight: 800;
+    font-size: 18px;
+    transition: all ease-in-out 0.2s;
+    background-color: hsl(0, 0%, 90%);
+}
+
+#conf-container {
+    display: flex;
+    justify-content: end;
+}
+
+#conf-btn{
+    height: 40px;
+    width: 40px;
+
+    background-color: white;
+    background: url(/images/configss.png);
+    background-size: contain;       
+    background-position: center;
+    background-repeat: no-repeat;
+
+    box-shadow: none;
+    
+    font-size: 25px;
+
+    margin: 20px 20px 0 0;
+    border-radius: 100%;
+}
+
+#conf-btn:hover {
+    transform: scale(1.10);
+    transition: ease-in-out 0.2s;
+}
+
+#save-btn{
+    margin: 10px auto 0 auto;
+    padding: 10px 20px;
+
+    border: none;
+    border-radius: 20px;
+
+    box-shadow: 3px 5px 5px hsl(0, 0%, 10%);
+}
+
+#save-btn:hover {
+    transform: scale(1.05);
+    transition: ease-in-out 0.2s;
+}
+
+#obj-container {
+    padding: 0 0 40px 0;
+    margin: 40px 15px 40px 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.obj {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    height: 60px;
+    width: 340px;
+
+    border: 1px solid hsl(0, 0%, 15px);
+    backdrop-filter: blur(50px);
+    box-shadow: 3px 5px 5px hsl(0, 0%, 10%);
+
+    border-radius: 30px;
+}
+
+
+.obj p {
+
+}
+
+.del-btn {
+    margin: 12px;
+    
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50px;
+
+    background: url(/images/delete.png);
+     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    box-shadow: none;
+
+    transition: all ease-in-out 0.2s;
+}
+
+.del-btn:hover {
+    transform: scale(1.10);
+    transition: ease-in-out 0.2s;
+}
