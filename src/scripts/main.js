@@ -10,13 +10,12 @@ const objContainer = document.getElementById('obj-container');
 
 
 
-// Global Varibles
+// Global Variables
 let allTabs = []
-let deleteBtns;
 
 
 
-// Functions calls
+// Functions Calls
 renderObjects();
 
 
@@ -33,7 +32,8 @@ saveBtn.addEventListener('click', async () => {
     const tab = await getCurrentTab();
     allTabs.push(tab);
     localStorage.setItem("tabs", JSON.stringify(allTabs));
-    objContainer.innerHTML += createUiObject(tab)
+    objContainer.innerHTML = ''
+    renderObjects();
 });
 
 
@@ -41,7 +41,7 @@ saveBtn.addEventListener('click', async () => {
 // Function declaration
 async function getCurrentTab() {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true }); // same as: const tabs = await chrome.tabs.query(...); const tab = tabs[0];
-    return tab?.url;  // return if != null or undefined
+    return tab?.url;  // returns the URL if defined
 }
 
 function renderObjects() {
@@ -51,13 +51,15 @@ function renderObjects() {
         1º - Get all the tabs from the local storage
         2º - Iterate over all tabs and create its UI object
         3º - Add the objects to the objContainer
-        4º - Add delete properties with deleteProperties function call
+        4º - Add the after render properties 
     */
 
     allTabs = JSON.parse(localStorage.getItem("tabs")) || [];
-    console.log(allTabs);
     allTabs.forEach(element => objContainer.innerHTML += createUiObject(element));
+
+    // After render properties
     deleteProperties();
+    hyperLinkProperties();
 }
 
 function deleteProperties() {
@@ -67,15 +69,25 @@ function deleteProperties() {
         1º - Get all the delete buttons 
         2º - Get the tab that is being deleted
         3º - Delete tab tab from the local storage
-        4º - Render objetcs again
+        4º - Render objects again
     */
     
-    deleteBtns = document.querySelectorAll('.del-btn'); 
+    const deleteBtns = document.querySelectorAll('.del-btn'); 
 
     deleteBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const tab = btn.parentElement.children[0].children[0]
-            allTabs = allTabs.filter(item => item !== tab.textContent);
+            const objElement = btn.closest('.obj');
+            
+            if (!objElement) return;   // Guard: skip if objElement child doesn't exist
+            
+            const tab = objElement.dataset.url;
+            const index = allTabs.indexOf(tab);
+            
+            if (index !== -1) {
+                allTabs.splice(index, 1);
+            }            
+           
+            allTabs = allTabs.filter(item => item !== tab);
             localStorage.setItem("tabs", JSON.stringify(allTabs));
             objContainer.innerHTML = ''
             renderObjects();
@@ -83,7 +95,22 @@ function deleteProperties() {
     });
 }
 
+function hyperLinkProperties() {
+    
+    const objs = document.querySelectorAll('.obj');  
 
+    objs.forEach(obj => {
+        const pContainer = obj.children[0]; // obj -> pContainer
+        if (!pContainer) return; // Guard: skip if p-container child doesn't exist
 
+        pContainer.addEventListener('click', () => {   // Add the event lister to the child of the object: obj -> p-container
+            const link = obj.dataset.url;
+            if (!link) {
+                return; // Guard: no-op if URL is missing or invalid
+            }
+            chrome.tabs.create({ url: link });
+        });
+    });
+}
 
 

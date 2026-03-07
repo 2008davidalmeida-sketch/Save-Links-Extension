@@ -89,7 +89,6 @@ button{
     height: 60px;
     width: 340px;
 
-    border: 1px solid hsl(0, 0%, 15px);
     backdrop-filter: blur(50px);
     box-shadow: 3px 5px 5px hsl(0, 0%, 10%);
 
@@ -102,6 +101,7 @@ button{
 }
 
 .p-container{
+    cursor: pointer;
     text-align: center;
    
     width: 100%;
