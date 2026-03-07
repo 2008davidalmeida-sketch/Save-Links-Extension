@@ -3,7 +3,17 @@
     "name": "Save Links",
     "version": "1.0",
     "permissions": ["storage", "tabs"],
+    "icons": {
+        "16": "images/markup.png",
+        "48": "images/markup.png",
+        "128": "images/markup.png"
+    },
     "action": {
+        "default_icon": {
+            "16": "images/markup.png",
+            "24": "images/markup.png",
+            "32": "images/markup.png"
+        },
         "default_popup": "src/index.html"
     }
 }
